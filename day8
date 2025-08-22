@@ -1,0 +1,33 @@
+#include<iostream>
+#include<sstream>
+using namespace std;
+
+string rev(string s)
+{
+    string words[10000];
+    int cnt = 0;
+    string w;
+    stringstream ss(s);
+
+    while (ss >> w)
+    {
+        words[cnt] = w;
+        cnt++;  
+    }
+
+    string result = "";
+    for (int i = cnt - 1; i >= 0; i--)
+    {
+        result += words[i];
+        if (i > 0) result += " ";
+    }
+
+    return result;
+}
+
+int main()
+{
+    string s = "this is nihall !";
+    cout << rev(s) << endl;
+    return 0;
+}
