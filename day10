@@ -1,0 +1,47 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <map>
+#include <algorithm>
+using namespace std;
+
+vector<vector<string>> groupAnagrams(vector<string>& strs)
+{
+    map<string, vector<string>> groups;
+
+    for (string word : strs) 
+    {
+        string sortedWord = word;
+        sort(sortedWord.begin(), sortedWord.end());
+        groups[sortedWord].push_back(word);
+    }
+
+    vector<vector<string>> result;
+    for (auto &entry : groups) 
+    {
+        result.push_back(entry.second);
+    }
+    return result;
+}
+
+int main() 
+{
+    vector<string> strs = {"eat", "tea", "tan", "ate", "nat", "bat"};
+    vector<vector<string>> ans = groupAnagrams(strs);
+
+    cout << "[";
+    for (int i = 0; i < ans.size(); i++) 
+    {
+        cout << "[";
+        for (int j = 0; j < ans[i].size(); j++) 
+        {
+            cout << "\"" << ans[i][j] << "\"";
+            if (j < ans[i].size() - 1) cout << ", ";
+        }
+        cout << "]";
+        if (i < ans.size() - 1) cout << ", ";
+    }
+    cout << "]" << endl;
+
+    return 0;
+}
