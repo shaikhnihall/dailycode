@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int firstElementToRepeatKTimes(vector<int>& arr, int k) 
+{
+    unordered_map<int, int> freq;
+    for (int x : arr) 
+    {
+        freq[x]++;
+    }
+    for (int x : arr) 
+    {
+        if (freq[x] == k) return x;
+    }
+
+    return -1;
+}
+
+int main() 
+{
+    vector<int> arr1 = {6, 6, 6, 6, 7, 7, 8, 8, 8};
+    int k1 = 3;
+    cout << firstElementToRepeatKTimes(arr1, k1) << endl;
+
+    return 0;
+}
